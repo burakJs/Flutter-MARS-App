@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:mars_project/core/constants/color_constants.dart';
 import 'package:mars_project/core/constants/image_constants.dart';
+import 'package:mars_project/widgets/home_view_widgets/circle_button.dart';
+import 'package:mars_project/widgets/home_view_widgets/money_with_dolar_icon.dart';
 import 'package:mars_project/widgets/home_view_widgets/popular_ice_cream_card.dart';
 import 'package:mars_project/widgets/home_view_widgets/search_filter_button.dart';
 import 'package:mars_project/widgets/home_view_widgets/search_textfield.dart';
 import 'package:mars_project/widgets/home_view_widgets/top_flavours_card.dart';
+import 'package:mars_project/widgets/home_view_widgets/top_item_card.dart';
 
 class IceCreamHomeView extends StatelessWidget {
   const IceCreamHomeView({Key? key}) : super(key: key);
@@ -17,7 +20,7 @@ class IceCreamHomeView extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: context.mediumValue / 1.5,
-            vertical: context.mediumValue,
+            vertical: context.mediumValue / 1.2,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,7 +35,7 @@ class IceCreamHomeView extends StatelessWidget {
               ),
               Expanded(
                 flex: 4,
-                child: _topFlovoursColumn(context, 'Top Flavours'),
+                child: _topFlovoursColumn(context),
               ),
               context.emptySizedHeightBoxLow,
               context.emptySizedHeightBoxLow,
@@ -40,11 +43,45 @@ class IceCreamHomeView extends StatelessWidget {
                 flex: 3,
                 child: _popularIceCreamColumn(context),
               ),
-              Expanded(flex: 6, child: Container(color: context.randomColor))
+              Expanded(
+                flex: 6,
+                child: _topItemColumn(context),
+              )
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Column _topItemColumn(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _topFlovoursTitleText(context, 'Top Item'),
+        context.emptySizedHeightBoxLow,
+        Expanded(
+          child: _topItemList(),
+        ),
+      ],
+    );
+  }
+
+  ListView _topItemList() {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: 2,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: TopItemCard(
+            title: 'Sherbet flavors',
+            subTitle: 'With strawberry jam',
+            money: '14.60',
+            callback: () {},
+          ),
+        );
+      },
     );
   }
 
@@ -65,16 +102,16 @@ class IceCreamHomeView extends StatelessWidget {
       itemCount: 3,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
-        return PopularIceCreamCard();
+        return const PopularIceCreamCard();
       },
     );
   }
 
-  Column _topFlovoursColumn(BuildContext context, String title) {
+  Column _topFlovoursColumn(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _topFlovoursTitleText(context, title),
+        _topFlovoursTitleText(context, 'Top Flavours'),
         context.emptySizedHeightBoxLow,
         context.emptySizedHeightBoxLow,
         Expanded(

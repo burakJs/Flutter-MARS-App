@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:mars_project/core/constants/color_constants.dart';
+import 'package:mars_project/widgets/home_view_widgets/circle_button.dart';
+import 'package:mars_project/widgets/home_view_widgets/money_with_dolar_icon.dart';
 
 class TopFloavoursCard extends StatelessWidget {
   const TopFloavoursCard({Key? key}) : super(key: key);
@@ -28,9 +30,9 @@ class TopFloavoursCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _moneyWithDolars(context),
+              const MoneyWithDolarIcon(money: '14.60'),
               const Spacer(),
-              _addFAButton(),
+              CircleButton(radius: 20, callback: () {}),
             ],
           ),
         ],
@@ -65,31 +67,4 @@ class TopFloavoursCard extends StatelessWidget {
       ],
     );
   }
-
-  FloatingActionButton _addFAButton() {
-    return FloatingActionButton(
-      onPressed: () {},
-      mini: true,
-      backgroundColor: ColorConstants.deepCerise,
-      child: Icon(
-        Icons.add,
-        size: 32,
-      ),
-    );
-  }
-
-  Row _moneyWithDolars(BuildContext context) => Row(
-        children: [
-          Text(
-            '\$ ',
-            style: context.textTheme.subtitle2!.copyWith(
-              color: ColorConstants.deepCerise,
-            ),
-          ),
-          Text(
-            '14,60',
-            style: context.textTheme.headline6,
-          ),
-        ],
-      );
 }
