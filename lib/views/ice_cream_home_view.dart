@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:mars_project/core/constants/color_constants.dart';
 import 'package:mars_project/core/constants/image_constants.dart';
+import 'package:mars_project/widgets/home_view_widgets/search_filter_button.dart';
+import 'package:mars_project/widgets/home_view_widgets/search_textfield.dart';
 
 class IceCreamHomeView extends StatelessWidget {
   const IceCreamHomeView({Key? key}) : super(key: key);
@@ -11,13 +13,47 @@ class IceCreamHomeView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: context.paddingMedium,
+          padding: EdgeInsets.symmetric(
+            horizontal: context.mediumValue / 1.5,
+            vertical: context.mediumValue,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _homePageTitlePart(context),
+              Expanded(
+                flex: 2,
+                child: _homePageTitlePart(context),
+              ),
+              Expanded(
+                flex: 2,
+                child: _searchTextFieldAndFilterButton(context),
+              ),
+              Expanded(flex: 4, child: Container(color: context.randomColor)),
+              Expanded(flex: 3, child: Container(color: context.randomColor)),
+              Expanded(flex: 6, child: Container(color: context.randomColor))
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Stack _searchTextFieldAndFilterButton(BuildContext context) {
+    return Stack(
+      children: [
+        SearchTextField(controller: TextEditingController()),
+        _filterButtonPadding(context),
+      ],
+    );
+  }
+
+  Padding _filterButtonPadding(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: context.mediumValue),
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: SearchFilterButton(
+          callback: () {},
         ),
       ),
     );
