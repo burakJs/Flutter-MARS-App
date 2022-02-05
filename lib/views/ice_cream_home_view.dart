@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:mars_project/core/constants/color_constants.dart';
 import 'package:mars_project/core/constants/image_constants.dart';
+import 'package:mars_project/widgets/home_view_widgets/popular_ice_cream_card.dart';
 import 'package:mars_project/widgets/home_view_widgets/search_filter_button.dart';
 import 'package:mars_project/widgets/home_view_widgets/search_textfield.dart';
+import 'package:mars_project/widgets/home_view_widgets/top_flavours_card.dart';
 
 class IceCreamHomeView extends StatelessWidget {
   const IceCreamHomeView({Key? key}) : super(key: key);
@@ -28,12 +30,86 @@ class IceCreamHomeView extends StatelessWidget {
                 flex: 2,
                 child: _searchTextFieldAndFilterButton(context),
               ),
-              Expanded(flex: 4, child: Container(color: context.randomColor)),
-              Expanded(flex: 3, child: Container(color: context.randomColor)),
+              Expanded(
+                flex: 4,
+                child: _topFlovoursColumn(context, 'Top Flavours'),
+              ),
+              context.emptySizedHeightBoxLow,
+              context.emptySizedHeightBoxLow,
+              Expanded(
+                flex: 3,
+                child: _popularIceCreamColumn(context),
+              ),
               Expanded(flex: 6, child: Container(color: context.randomColor))
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Column _popularIceCreamColumn(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _topFlovoursTitleText(context, 'Popular Ice Cream'),
+        Expanded(
+          child: _popularIceCreamList(),
+        )
+      ],
+    );
+  }
+
+  ListView _popularIceCreamList() {
+    return ListView.builder(
+      itemCount: 3,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, index) {
+        return PopularIceCreamCard();
+      },
+    );
+  }
+
+  Column _topFlovoursColumn(BuildContext context, String title) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _topFlovoursTitleText(context, title),
+        context.emptySizedHeightBoxLow,
+        context.emptySizedHeightBoxLow,
+        Expanded(
+          child: _topFlovoursContainer(context),
+        )
+      ],
+    );
+  }
+
+  Text _topFlovoursTitleText(BuildContext context, String title) {
+    return Text(
+      title,
+      style: context.textTheme.headline6!.copyWith(
+        color: ColorConstants.blackPearl.withOpacity(0.7),
+      ),
+    );
+  }
+
+  Container _topFlovoursContainer(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: context.normalBorderRadius,
+        color: ColorConstants.deepCerise.withOpacity(0.3),
+      ),
+      child: Row(
+        children: const [
+          Expanded(
+            flex: 2,
+            child: Placeholder(),
+          ),
+          Expanded(
+            flex: 3,
+            child: TopFloavoursCard(),
+          ),
+        ],
       ),
     );
   }

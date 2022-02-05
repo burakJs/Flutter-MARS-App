@@ -8,7 +8,7 @@ class SearchFilterButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Icon(
             Icons.tune,
