@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:mars_project/core/constants/color_constants.dart';
+import '../../../../core/constants/color_constants.dart';
 
-import 'circle_button.dart';
-import 'money_with_dolar_icon.dart';
+import '../button/circle_button.dart';
+import '../icons/money_with_dolar_icon.dart';
 
 class TopItemCard extends StatelessWidget {
   const TopItemCard({
@@ -25,7 +25,7 @@ class TopItemCard extends StatelessWidget {
       width: context.width / 2.4,
       decoration: BoxDecoration(
         borderRadius: context.lowBorderRadius,
-        color: ColorConstants.deepCerise.withOpacity(0.3),
+        color: ColorConstants().randomColor.withOpacity(0.3),
       ),
       child: Padding(
         padding: context.paddingLow,

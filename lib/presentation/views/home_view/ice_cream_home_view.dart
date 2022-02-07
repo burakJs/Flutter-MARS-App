@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:mars_project/core/constants/color_constants.dart';
-import 'package:mars_project/core/constants/image_constants.dart';
-import 'package:mars_project/widgets/home_view_widgets/circle_button.dart';
-import 'package:mars_project/widgets/home_view_widgets/money_with_dolar_icon.dart';
-import 'package:mars_project/widgets/home_view_widgets/popular_ice_cream_card.dart';
-import 'package:mars_project/widgets/home_view_widgets/search_filter_button.dart';
-import 'package:mars_project/widgets/home_view_widgets/search_textfield.dart';
-import 'package:mars_project/widgets/home_view_widgets/top_flavours_card.dart';
-import 'package:mars_project/widgets/home_view_widgets/top_item_card.dart';
+
+import '../../../core/constants/color_constants.dart';
+import '../../../core/constants/image_constants.dart';
+import '../../widgets/home_view_widgets/button/search_filter_button.dart';
+import '../../widgets/home_view_widgets/card/popular_ice_cream_card.dart';
+import '../../widgets/home_view_widgets/card/top_flavours_card.dart';
+import '../../widgets/home_view_widgets/card/top_item_card.dart';
+import '../../widgets/home_view_widgets/textfield/search_textfield.dart';
 
 class IceCreamHomeView extends StatelessWidget {
   const IceCreamHomeView({Key? key}) : super(key: key);
@@ -102,7 +101,7 @@ class IceCreamHomeView extends StatelessWidget {
       itemCount: 3,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
-        return const PopularIceCreamCard();
+        return PopularIceCreamCard(index: index);
       },
     );
   }

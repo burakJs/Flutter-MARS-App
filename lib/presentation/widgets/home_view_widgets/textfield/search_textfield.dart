@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:mars_project/core/constants/color_constants.dart';
+import '../../../../core/constants/color_constants.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({Key? key, required this.controller}) : super(key: key);

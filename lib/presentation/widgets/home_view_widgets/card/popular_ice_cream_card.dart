@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:mars_project/core/constants/color_constants.dart';
+
+import '../../../../core/constants/color_constants.dart';
 
 class PopularIceCreamCard extends StatelessWidget {
-  const PopularIceCreamCard({Key? key}) : super(key: key);
+  const PopularIceCreamCard({Key? key, required this.index}) : super(key: key);
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class PopularIceCreamCard extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: context.lowBorderRadius,
-              color: ColorConstants.deepCerise,
+              color: ColorConstants.softColors[index % ColorConstants.softColors.length],
             ),
             width: context.width / 8,
             height: context.height / 18,
@@ -23,7 +25,7 @@ class PopularIceCreamCard extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(
-              color: ColorConstants.deepCerise.withOpacity(0.3),
+              color: ColorConstants.softColors[index % ColorConstants.softColors.length].withOpacity(0.3),
             ),
             height: context.height / 18,
             child: Padding(

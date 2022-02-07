@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:mars_project/core/constants/color_constants.dart';
-import 'package:mars_project/views/ice_cream_home_view.dart';
+
+import 'core/constants/color_constants.dart';
+import 'presentation/views/home_view/ice_cream_home_view.dart';
 
 void main() => runApp(const MyApp());
 

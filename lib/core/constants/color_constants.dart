@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class ColorConstants {
@@ -27,4 +29,10 @@ class ColorConstants {
 
   /// Appbar Background Color
   static Color paleRose = const Color.fromRGBO(236, 198, 211, 1);
+
+  /// Popular Ice Cream Card Colors
+  static List<Color> softColors = [deepCerise, witchHaze, paleCornflowerBlue];
+
+  /// Popular Ice Cream Card Colors
+  Color get randomColor => softColors[Random().nextInt(softColors.length)];
 }

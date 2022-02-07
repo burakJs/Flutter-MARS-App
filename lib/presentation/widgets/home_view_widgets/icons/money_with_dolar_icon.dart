@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:mars_project/core/constants/color_constants.dart';
+import '../../../../core/constants/color_constants.dart';
 
 class MoneyWithDolarIcon extends StatelessWidget {
   final String money;

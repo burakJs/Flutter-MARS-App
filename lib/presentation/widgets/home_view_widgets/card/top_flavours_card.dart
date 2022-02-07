@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:mars_project/core/constants/color_constants.dart';
-import 'package:mars_project/widgets/home_view_widgets/circle_button.dart';
-import 'package:mars_project/widgets/home_view_widgets/money_with_dolar_icon.dart';
+
+import '../../../../core/constants/color_constants.dart';
+import '../button/circle_button.dart';
+import '../icons/money_with_dolar_icon.dart';
 
 class TopFloavoursCard extends StatelessWidget {
   const TopFloavoursCard({Key? key}) : super(key: key);

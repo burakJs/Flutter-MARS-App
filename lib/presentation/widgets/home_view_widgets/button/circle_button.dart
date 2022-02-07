@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:mars_project/core/constants/color_constants.dart';
+import '../../../../core/constants/color_constants.dart';
 
 class CircleButton extends StatelessWidget {
   const CircleButton({Key? key, required this.callback, required this.radius}) : super(key: key);
