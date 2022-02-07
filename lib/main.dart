@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
 import 'core/constants/color_constants.dart';
-import 'presentation/views/home_view/ice_cream_home_view.dart';
+import 'presentation/views/home/home_view/ice_cream_home_view.dart';
 
 void main() => runApp(const MyApp());
 

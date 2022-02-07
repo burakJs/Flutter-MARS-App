@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:mars_project/models/top_flavour.dart';
 
 import '../../../../core/constants/color_constants.dart';
 import '../button/circle_button.dart';
 import '../icons/money_with_dolar_icon.dart';
 
 class TopFloavoursCard extends StatelessWidget {
-  const TopFloavoursCard({Key? key}) : super(key: key);
-
+  const TopFloavoursCard({Key? key, required this.topFlavour}) : super(key: key);
+  final TopFlavour topFlavour;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,7 +18,7 @@ class TopFloavoursCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Vanilla Ice Cream',
+            topFlavour.name,
             style: context.textTheme.headline6,
           ),
           Row(
@@ -31,7 +32,7 @@ class TopFloavoursCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const MoneyWithDolarIcon(money: '14.60'),
+              MoneyWithDolarIcon(money: '${topFlavour.cost}'),
               const Spacer(),
               CircleButton(radius: 20, callback: () {}),
             ],
@@ -50,7 +51,7 @@ class TopFloavoursCard extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(context.lowValue / 2),
         child: Text(
-          '1 KG',
+          '${topFlavour.weight} KG',
           style: context.textTheme.subtitle2,
         ),
       ),
@@ -62,7 +63,7 @@ class TopFloavoursCard extends StatelessWidget {
       children: [
         Icon(Icons.star, color: ColorConstants.witchHaze),
         Text(
-          '4.9',
+          '${topFlavour.point}',
           style: context.textTheme.subtitle2,
         )
       ],

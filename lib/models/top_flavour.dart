@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class IceCream {
+class TopFlavour {
   final String name;
-  final String weight;
+  final int weight;
   final double point;
   final double cost;
   final String image;
   final Color color;
 
-  IceCream({
+  TopFlavour({
     required this.name,
     required this.weight,
     required this.point,

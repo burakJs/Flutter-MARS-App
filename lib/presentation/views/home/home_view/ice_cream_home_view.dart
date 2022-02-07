@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
+import 'package:mars_project/models/top_flavour.dart';
 
-import '../../../core/constants/color_constants.dart';
-import '../../../core/constants/image_constants.dart';
-import '../../widgets/home_view_widgets/button/search_filter_button.dart';
-import '../../widgets/home_view_widgets/card/popular_ice_cream_card.dart';
-import '../../widgets/home_view_widgets/card/top_flavours_card.dart';
-import '../../widgets/home_view_widgets/card/top_item_card.dart';
-import '../../widgets/home_view_widgets/textfield/search_textfield.dart';
+import '../../../../core/constants/color_constants.dart';
+import '../../../../core/constants/image_constants.dart';
+import '../../../widgets/home_view_widgets/button/search_filter_button.dart';
+import '../../../widgets/home_view_widgets/card/popular_ice_cream_card.dart';
+import '../../../widgets/home_view_widgets/card/top_flavours_card.dart';
+import '../../../widgets/home_view_widgets/card/top_item_card.dart';
+import '../../../widgets/home_view_widgets/textfield/search_textfield.dart';
+import '../home_view_model/top_flavour/top_flavour_state.dart';
+import '../home_view_model/top_flavour/top_flavours_cubit.dart';
 
 class IceCreamHomeView extends StatelessWidget {
   const IceCreamHomeView({Key? key}) : super(key: key);
@@ -129,23 +133,39 @@ class IceCreamHomeView extends StatelessWidget {
     );
   }
 
-  Container _topFlovoursContainer(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: context.normalBorderRadius,
-        color: ColorConstants.deepCerise.withOpacity(0.3),
-      ),
-      child: Row(
-        children: const [
-          Expanded(
-            flex: 2,
-            child: Placeholder(),
-          ),
-          Expanded(
-            flex: 3,
-            child: TopFloavoursCard(),
-          ),
-        ],
+  Widget _topFlovoursContainer(BuildContext context) {
+    return BlocProvider(
+      create: (context) => TopFlavourCubit()..getTopFlavour(),
+      child: BlocConsumer<TopFlavourCubit, TopFlavourState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          if (state is TopFlavourLoading) {
+            return const CircularProgressIndicator();
+          } else if (state is TopFlavourSuccess) {
+            TopFlavour _topFlavour =
+                state.topFlavour ?? TopFlavour(name: 'Base', weight: 1, point: 1, cost: 1, image: '', color: ColorConstants().randomColor);
+            return Container(
+              decoration: BoxDecoration(
+                borderRadius: context.normalBorderRadius,
+                color: _topFlavour.color.withOpacity(0.3),
+              ),
+              child: Row(
+                children: [
+                  const Expanded(
+                    flex: 2,
+                    child: Placeholder(),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: TopFloavoursCard(topFlavour: _topFlavour),
+                  ),
+                ],
+              ),
+            );
+          } else {
+            return const Text('ERROR');
+          }
+        },
       ),
     );
   }
