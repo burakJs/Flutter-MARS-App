@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:mars_project/models/top_item.dart';
 
 import '../../../../core/constants/color_constants.dart';
 import '../button/circle_button.dart';
@@ -8,15 +9,11 @@ import '../icons/money_with_dolar_icon.dart';
 class TopItemCard extends StatelessWidget {
   const TopItemCard({
     Key? key,
-    required this.title,
-    required this.subTitle,
-    required this.money,
     required this.callback,
+    required this.topItem,
   }) : super(key: key);
 
-  final String title;
-  final String subTitle;
-  final String money;
+  final TopItem topItem;
   final VoidCallback callback;
 
   @override
@@ -32,16 +29,16 @@ class TopItemCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(child: Placeholder()),
+            const Expanded(child: Placeholder()),
             Text(
-              title,
+              topItem.title,
               style: context.textTheme.headline6!.copyWith(
                 fontSize: 19,
                 color: ColorConstants.blackPearl.withOpacity(0.8),
               ),
             ),
             Text(
-              subTitle,
+              topItem.subTitle,
               style: context.textTheme.bodyText1!.copyWith(
                 color: ColorConstants.blackPearl.withOpacity(0.4),
               ),
@@ -50,7 +47,7 @@ class TopItemCard extends StatelessWidget {
               padding: const EdgeInsets.all(4.0),
               child: Row(
                 children: [
-                  MoneyWithDolarIcon(money: money),
+                  MoneyWithDolarIcon(money: '${topItem.cost}'),
                   const Spacer(),
                   CircleButton(radius: 15, callback: callback),
                 ],

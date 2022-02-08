@@ -11,4 +11,20 @@ class FirebaseDataManager extends FirebaseDataService {
     final data = result.data();
     return data;
   }
+
+  @override
+  bool setDataToFirebase(String collectionName, String documentName, Map<String, Object?> json) {
+    bool isSuccess = false;
+    firestore
+        .collection(collectionName)
+        .doc(documentName)
+        .update(json)
+        .then(
+          (value) => isSuccess = true,
+        )
+        .catchError(
+          (error) => isSuccess = false,
+        );
+    return isSuccess;
+  }
 }

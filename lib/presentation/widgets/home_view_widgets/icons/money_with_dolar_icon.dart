@@ -5,7 +5,9 @@ import '../../../../core/constants/color_constants.dart';
 
 class MoneyWithDolarIcon extends StatelessWidget {
   final String money;
-  const MoneyWithDolarIcon({Key? key, required this.money}) : super(key: key);
+  final TextStyle? dolarStyle;
+  final TextStyle? costStyle;
+  const MoneyWithDolarIcon({Key? key, required this.money, this.dolarStyle, this.costStyle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +15,13 @@ class MoneyWithDolarIcon extends StatelessWidget {
       children: [
         Text(
           '\$ ',
-          style: context.textTheme.subtitle2!.copyWith(
+          style: (dolarStyle ?? context.textTheme.subtitle2!).copyWith(
             color: ColorConstants.deepCerise,
           ),
         ),
         Text(
           money,
-          style: context.textTheme.headline6,
+          style: costStyle ?? context.textTheme.headline6,
         ),
       ],
     );

@@ -10,4 +10,6 @@ class StringConstants {
   String get whatFlavorDoYouLikeToEat => 'What flavor do you like to eat?';
   String get erorTopFlavour => 'Error when is loading top flavours';
   String get errorPopular => 'Error when is loading popular ice creams';
+  String get errorTopItem => 'Error when is loading popular top items';
+  String get addToCard => 'Add to Card';
 }

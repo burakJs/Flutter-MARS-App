@@ -1,33 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 import '../core/constants/color_constants.dart';
 
+part 'top_flavour.g.dart';
+
+@JsonSerializable()
 class TopFlavour {
   final String name;
   final int weight;
   final double point;
   final double cost;
   final String image;
-  final Color color;
 
-  static final TopFlavour baseModel = TopFlavour(name: 'Base', weight: 1, point: 1, cost: 1, image: '', color: ColorConstants().randomColor);
+  @JsonKey(name: 'color_r')
+  final int colorR;
+
+  @JsonKey(name: 'color_g')
+  final int colorG;
+
+  @JsonKey(name: 'color_b')
+  final int colorB;
+
+  final String description;
+
+  @JsonKey(name: 'reviews_count')
+  final int reviewsCount;
+
+  final bool isLiked;
+
+  Color get color => Color.fromRGBO(colorR, colorG, colorB, 1);
+
+  static final TopFlavour baseModel = TopFlavour(
+    name: 'Base',
+    weight: 1,
+    point: 1,
+    cost: 1,
+    image: '',
+    description: 'Description text...',
+    reviewsCount: 229,
+    isLiked: false,
+    colorR: 221,
+    colorG: 66,
+    colorB: 134,
+  );
+
   TopFlavour({
     required this.name,
     required this.weight,
     required this.point,
     required this.cost,
     required this.image,
-    required this.color,
+    required this.colorR,
+    required this.colorG,
+    required this.colorB,
+    required this.description,
+    required this.reviewsCount,
+    required this.isLiked,
   });
 
-  factory TopFlavour.fromJson(Map<String, dynamic>? json) {
-    return TopFlavour(
-      name: json?['name'] as String,
-      weight: json?['weight'] as int,
-      point: json?['point'] as double,
-      cost: json?['cost'] as double,
-      image: json?['image'] as String,
-      color: Color.fromRGBO(json?['color_r'] as int, json?['color_g'] as int, json?['color_b'] as int, 1),
-    );
-  }
+  factory TopFlavour.fromJson(Map<String, dynamic> json) => _$TopFlavourFromJson(json);
+  Map<String, dynamic> toJson() => _$TopFlavourToJson(this);
 }
