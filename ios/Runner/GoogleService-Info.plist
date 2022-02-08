@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>142813054197-53jugvjkj8ii9ual9keeur1lea387k9r.apps.googleusercontent.com</string>
+	<string>358423033605-pk29ceqcv2m3u5hfus0i0129qd7am06f.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.142813054197-53jugvjkj8ii9ual9keeur1lea387k9r</string>
+	<string>com.googleusercontent.apps.358423033605-pk29ceqcv2m3u5hfus0i0129qd7am06f</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD004xT7eb1uZXkOXhxU1VhcsCFObRMwz4</string>
+	<string>AIzaSyBjGPlT1i9DcB1H86KI_1l55rM1D01kirA</string>
 	<key>GCM_SENDER_ID</key>
-	<string>142813054197</string>
+	<string>358423033605</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.marsProject</string>
 	<key>PROJECT_ID</key>
-	<string>mars-app-4170c</string>
+	<string>mars-5b451</string>
 	<key>STORAGE_BUCKET</key>
-	<string>mars-app-4170c.appspot.com</string>
+	<string>mars-5b451.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:142813054197:ios:021f26fa72de3a785871bc</string>
+	<string>1:358423033605:ios:2fd3e06bb99c0aefdf296c</string>
 </dict>
 </plist>
