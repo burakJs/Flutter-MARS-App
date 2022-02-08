@@ -1,16 +1,13 @@
-import 'package:mars_project/core/data/abstract/firebase_data_service.dart';
-import 'package:mars_project/core/data/concrete/firebase_data_manager.dart';
-import 'package:mars_project/models/top_flavour.dart';
-
+import '../../../../../../core/data/abstract/firebase_data_service.dart';
 import 'IFlavour_repository.dart';
 
 class FlavourRepository extends IFlavourRepository {
-  final FirebaseDataService _firebaseDataService;
+  final FirebaseDataService firebaseDataService;
 
-  FlavourRepository({FirebaseDataService? firebaseDataService}) : _firebaseDataService = firebaseDataService ?? FirebaseDataManager();
+  FlavourRepository({required this.firebaseDataService});
 
   @override
-  TopFlavour getTopFlavour() {
-    return _firebaseDataService.getTopFlavourFromFirebase();
+  Future<Map<String, dynamic>?> getTopFlavour() async {
+    return await firebaseDataService.getDataFromFirebase('top_flavour', 'top');
   }
 }

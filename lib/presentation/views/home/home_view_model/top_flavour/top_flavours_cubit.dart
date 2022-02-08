@@ -1,21 +1,19 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mars_project/models/top_flavour.dart';
 
+import '../../../../../models/top_flavour.dart';
 import '../top_flavour/top_flavour_state.dart';
 import 'repositories/IFlavour_repository.dart';
-import 'repositories/flavour_repository.dart';
 
 class TopFlavourCubit extends Cubit<TopFlavourState> {
-  TopFlavourCubit({IFlavourRepository? repository})
-      : _repository = repository ?? FlavourRepository(),
-        super(const TopFlavourInitial());
+  TopFlavourCubit({required this.repository}) : super(const TopFlavourInitial());
 
-  final IFlavourRepository _repository;
+  final IFlavourRepository repository;
 
-  void getTopFlavour() {
+  Future<void> getTopFlavour() async {
     emit(const TopFlavourLoading());
 
-    var response = _repository.getTopFlavour();
-    emit(TopFlavourSuccess(topFlavour: response));
+    var response = await repository.getTopFlavour();
+    var model = TopFlavour.fromJson(response);
+    emit(TopFlavourSuccess(topFlavour: model));
   }
 }

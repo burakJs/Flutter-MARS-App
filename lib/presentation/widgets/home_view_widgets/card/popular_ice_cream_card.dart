@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:mars_project/models/top_popular.dart';
 
 import '../../../../core/constants/color_constants.dart';
 
 class PopularIceCreamCard extends StatelessWidget {
-  const PopularIceCreamCard({Key? key, required this.index}) : super(key: key);
+  const PopularIceCreamCard({Key? key, required this.index, required this.topPopular}) : super(key: key);
   final int index;
+  final TopPopular? topPopular;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class PopularIceCreamCard extends StatelessWidget {
             height: context.height / 18,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: context.lowValue * 1.5, vertical: context.lowValue * 1.8),
-              child: const Center(child: Text('Vanilla')),
+              child: Center(child: Text((topPopular ?? TopPopular(name: 'Vanilla')).name)),
             ),
           ),
         ],

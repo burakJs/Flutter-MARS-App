@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:mars_project/models/top_flavour.dart';
 
 import '../../../../core/constants/color_constants.dart';
+import '../../../../models/top_flavour.dart';
 import '../button/circle_button.dart';
 import '../icons/money_with_dolar_icon.dart';
 

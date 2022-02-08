@@ -1,4 +1,4 @@
-import 'package:mars_project/models/top_flavour.dart';
+import '../../../../../models/top_flavour.dart';
 
 abstract class TopFlavourState {
   const TopFlavourState();

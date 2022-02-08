@@ -1,5 +1,3 @@
-import '../../../../../../models/top_flavour.dart';
-
 abstract class IFlavourRepository {
-  TopFlavour getTopFlavour();
+  Future<Map<String, dynamic>?> getTopFlavour();
 }

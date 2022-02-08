@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import '../../../../core/constants/color_constants.dart';
 
+import '../../../../core/constants/color_constants.dart';
 import '../button/circle_button.dart';
 import '../icons/money_with_dolar_icon.dart';
 
