@@ -15,7 +15,7 @@ class DetailPageTopPart {
     return Center(
       child: Padding(
         padding: context.paddingMedium,
-        child: Image.asset(ImageConstants.instance.pink),
+        child: Hero(tag: ImageConstants.instance.pink, child: Image.asset(ImageConstants.instance.pink)),
       ),
     );
   }

@@ -164,7 +164,7 @@ class IceCreamHomeView extends StatelessWidget {
                   children: [
                     Expanded(
                       flex: 2,
-                      child: Image.asset(ImageConstants.instance.pink),
+                      child: Hero(tag: ImageConstants.instance.pink, child: Image.asset(ImageConstants.instance.pink)),
                     ),
                     Expanded(
                       flex: 3,
