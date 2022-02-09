@@ -11,10 +11,12 @@ class DetailPageTopPart {
     );
   }
 
-  static Padding _imagePadding(BuildContext context) {
-    return Padding(
-      padding: context.paddingMedium,
-      child: const Placeholder(),
+  static Widget _imagePadding(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: context.paddingMedium,
+        child: Image.asset(ImageConstants.instance.pink),
+      ),
     );
   }
 }

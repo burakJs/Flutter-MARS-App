@@ -95,6 +95,7 @@ class IceCreamHomeView extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: TopItemCard(
+                    index: index,
                     topItem: state.topItem ?? TopItem.baseModel,
                     callback: () {},
                   ),
@@ -161,9 +162,9 @@ class IceCreamHomeView extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    const Expanded(
+                    Expanded(
                       flex: 2,
-                      child: Placeholder(),
+                      child: Image.asset(ImageConstants.instance.pink),
                     ),
                     Expanded(
                       flex: 3,

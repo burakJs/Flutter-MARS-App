@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:mars_project/core/constants/image_constants.dart';
 
 import '../../../../core/constants/color_constants.dart';
 import '../../../../models/top_popular.dart';
 
 class PopularIceCreamCard extends StatelessWidget {
-  const PopularIceCreamCard({Key? key, required this.index, required this.topPopular}) : super(key: key);
+  PopularIceCreamCard({Key? key, required this.index, required this.topPopular}) : super(key: key);
   final int index;
   final TopPopular? topPopular;
-
+  final List<String> imagePaths = [
+    ImageConstants.instance.vanilla,
+    ImageConstants.instance.neo,
+    ImageConstants.instance.coconat,
+  ];
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,7 +28,7 @@ class PopularIceCreamCard extends StatelessWidget {
             ),
             width: context.width / 8,
             height: context.height / 18,
-            child: Placeholder(),
+            child: Image.asset(imagePaths[index]),
           ),
           Container(
             decoration: BoxDecoration(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:mars_project/core/constants/image_constants.dart';
 import '../../../../models/top_item.dart';
 
 import '../../../../core/constants/color_constants.dart';
@@ -11,8 +12,9 @@ class TopItemCard extends StatelessWidget {
     Key? key,
     required this.callback,
     required this.topItem,
+    required this.index,
   }) : super(key: key);
-
+  final int index;
   final TopItem topItem;
   final VoidCallback callback;
 
@@ -29,7 +31,7 @@ class TopItemCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Expanded(child: Placeholder()),
+            Expanded(child: Image.asset(index == 0 ? ImageConstants.instance.sherbet1 : ImageConstants.instance.sherbet2)),
             Text(
               topItem.title,
               style: context.textTheme.headline6!.copyWith(
