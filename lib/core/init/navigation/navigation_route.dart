@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mars_project/models/top_flavour.dart';
-import 'package:mars_project/presentation/views/detail/detail_view/ice_cream_detail_view.dart';
+import '../../../models/top_flavour.dart';
+import '../../../presentation/views/detail/detail_view/ice_cream_detail_view.dart';
 
-import '../../presentation/views/home/home_view/ice_cream_home_view.dart';
-import '../../presentation/widgets/error_widget.dart';
-import '../constants/navigation_constants.dart';
+import '../../../presentation/views/home/home_view/ice_cream_home_view.dart';
+import '../../../presentation/widgets/error_widget.dart';
+import '../../constants/navigation_constants.dart';
 
 class NavigationRoute {
   static NavigationRoute? _instance;

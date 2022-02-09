@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:mars_project/models/top_popular.dart';
+import '../../../../models/top_popular.dart';
 
 import '../../../../core/constants/color_constants.dart';
 

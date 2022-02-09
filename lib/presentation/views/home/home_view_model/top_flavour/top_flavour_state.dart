@@ -13,8 +13,8 @@ class TopFlavourLoading implements TopFlavourState {
 }
 
 class TopFlavourSuccess implements TopFlavourState {
-  TopFlavour? topFlavour;
-  TopFlavourSuccess({this.topFlavour});
+  TopFlavour? flavour;
+  TopFlavourSuccess({this.flavour});
 }
 
 class TopFlavourError implements TopFlavourState {

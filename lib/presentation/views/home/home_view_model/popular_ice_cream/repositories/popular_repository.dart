@@ -8,6 +8,6 @@ class PopularRepository extends IPopularRepository {
 
   @override
   Future<Map<String, dynamic>?> getPopularIceCreams() async {
-    return await firebaseDataService.getDataFromFirebase('popular', 'popular_ice_creams');
+    return await firebaseDataService.getDataFromFirebase(firebase.POPULAR_COLLECTION, firebase.POPULAR_DOCUMENT);
   }
 }

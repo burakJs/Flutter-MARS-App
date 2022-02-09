@@ -14,6 +14,6 @@ class TopFlavourCubit extends Cubit<TopFlavourState> {
 
     var response = await repository.getTopFlavour();
     var model = TopFlavour.fromJson(response ?? TopFlavour.baseModel.toJson());
-    emit(TopFlavourSuccess(topFlavour: model));
+    emit(TopFlavourSuccess(flavour: model));
   }
 }

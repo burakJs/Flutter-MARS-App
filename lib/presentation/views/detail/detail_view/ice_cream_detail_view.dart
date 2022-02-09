@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
-import 'package:mars_project/core/constants/color_constants.dart';
-import 'package:mars_project/core/constants/string_constants.dart';
-import 'package:mars_project/core/extensions/int_extension.dart';
-import 'package:mars_project/models/top_flavour.dart';
-import 'package:mars_project/presentation/widgets/home_view_widgets/icons/money_with_dolar_icon.dart';
+import '../../../../core/data/concrete/firebase_data_manager.dart';
+import '../detail_view_model/repositories/ITop_flavour_detail_repository.dart';
+import '../../../../core/constants/color_constants.dart';
+import '../../../../core/constants/string_constants.dart';
+import '../../../../core/extensions/int_extension.dart';
+import '../../../../core/widget/error_widget.dart';
+import '../../../../models/top_flavour.dart';
+import '../detail_view_model/repositories/top_flavour_detail_repository.dart';
+import '../detail_view_model/top_flavour_detail_state.dart';
+import '../../home/home_view_model/top_flavour/top_flavour_state.dart';
+import '../../../widgets/home_view_widgets/icons/money_with_dolar_icon.dart';
+
+import '../detail_view_model/top_flavour_detail_cubit.dart';
 
 class IceCreamDetailView extends StatelessWidget {
   const IceCreamDetailView({Key? key, required this.topFlavour}) : super(key: key);
@@ -39,11 +48,34 @@ class IceCreamDetailView extends StatelessWidget {
       elevation: 0,
       foregroundColor: ColorConstants.mandy,
       actions: [
-        Padding(
-          padding: context.horizontalPaddingMedium,
-          child: Icon(topFlavour.isLiked ? Icons.favorite : Icons.favorite_border, size: 32),
-        ),
+        _likeHearthPadding(context),
       ],
+    );
+  }
+
+  Padding _likeHearthPadding(BuildContext context) {
+    return Padding(
+      padding: context.horizontalPaddingMedium,
+      child: BlocProvider(
+        create: (context) => TopFlavourDetailCubit(repository: TopFlavourDetailRepository(service: FirebaseDataManager())),
+        child: BlocBuilder<TopFlavourDetailCubit, TopFlavourDetailState>(
+          builder: (context, state) {
+            if (state is TopFlavourDetailInitial) {
+              return GestureDetector(
+                  onTap: () => context.read<TopFlavourDetailCubit>().setLike(topFlavour),
+                  child: Icon(topFlavour.isLiked ? Icons.favorite : Icons.favorite_border, size: 32));
+            } else if (state is TopFlavourDetailLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is TopFlavourDetailSuccess) {
+              return GestureDetector(
+                  onTap: () => context.read<TopFlavourDetailCubit>().setLike(topFlavour),
+                  child: Icon((state.topFlavour ?? TopFlavour.baseModel).isLiked ? Icons.favorite : Icons.favorite_border, size: 32));
+            } else {
+              return BlocErrorWidget(error: (state as TopFlavourDetailError).error ?? StringConstants.instance.errorWhenSetLike);
+            }
+          },
+        ),
+      ),
     );
   }
 
@@ -188,14 +220,49 @@ class IceCreamDetailView extends StatelessWidget {
     );
   }
 
-  Row _setWeightAndCostRow(BuildContext context) {
+  Widget _setWeightAndCostRow(BuildContext context) {
+    return BlocProvider(
+      create: (context) => TopFlavourDetailCubit(repository: TopFlavourDetailRepository(service: FirebaseDataManager())),
+      child: BlocBuilder<TopFlavourDetailCubit, TopFlavourDetailState>(
+        builder: (context, state) {
+          if (state is TopFlavourDetailInitial) {
+            return _initialWeightAndCostRow(context);
+          } else if (state is TopFlavourDetailLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is TopFlavourDetailSuccess) {
+            return Row(
+              children: [
+                _setWeightButton(context, Icons.remove, false),
+                const Spacer(),
+                Text((state.kilos ?? 1).toKg),
+                const Spacer(),
+                _setWeightButton(context, Icons.add, true),
+                Spacer(flex: _flexTen),
+                MoneyWithDolarIcon(
+                  money: topFlavour.cost.toStringAsFixed(2),
+                  dolarStyle: context.textTheme.headline4,
+                  costStyle: context.textTheme.headline4?.copyWith(
+                    color: ColorConstants.blackPearl,
+                  ),
+                ),
+              ],
+            );
+          } else {
+            return BlocErrorWidget(error: StringConstants.instance.errorWhenSetKilos);
+          }
+        },
+      ),
+    );
+  }
+
+  Row _initialWeightAndCostRow(BuildContext context) {
     return Row(
       children: [
-        _setWeightButton(context, Icons.remove),
+        _setWeightButton(context, Icons.remove, false),
         const Spacer(),
         Text(topFlavour.weight.toKg),
         const Spacer(),
-        _setWeightButton(context, Icons.add),
+        _setWeightButton(context, Icons.add, true),
         Spacer(flex: _flexTen),
         MoneyWithDolarIcon(
           money: topFlavour.cost.toStringAsFixed(2),
@@ -208,25 +275,28 @@ class IceCreamDetailView extends StatelessWidget {
     );
   }
 
-  Container _setWeightButton(BuildContext context, IconData icon) {
-    return Container(
-      width: context.lowValue * 3,
-      height: context.lowValue * 3,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            ColorConstants.deepCerise.withOpacity(0.5),
-            ColorConstants.deepCerise.withOpacity(0.7),
-            ColorConstants.deepCerise.withOpacity(0.9),
-            ColorConstants.deepCerise,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
+  GestureDetector _setWeightButton(BuildContext context, IconData icon, bool isAdd) {
+    return GestureDetector(
+      onTap: () => context.read<TopFlavourDetailCubit>().setKilos(isAdd),
+      child: Container(
+        width: context.lowValue * 3,
+        height: context.lowValue * 3,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              ColorConstants.deepCerise.withOpacity(0.5),
+              ColorConstants.deepCerise.withOpacity(0.7),
+              ColorConstants.deepCerise.withOpacity(0.9),
+              ColorConstants.deepCerise,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
         ),
-      ),
-      child: Icon(
-        icon,
-        color: context.colorScheme.onPrimary,
+        child: Icon(
+          icon,
+          color: context.colorScheme.onPrimary,
+        ),
       ),
     );
   }

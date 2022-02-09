@@ -12,4 +12,6 @@ class StringConstants {
   String get errorPopular => 'Error when is loading popular ice creams';
   String get errorTopItem => 'Error when is loading popular top items';
   String get addToCard => 'Add to Card';
+  String get errorWhenSetLike => 'Error when is set like';
+  String get errorWhenSetKilos => 'Error when is set kilos';
 }

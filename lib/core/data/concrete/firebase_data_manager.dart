@@ -1,4 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../init/base_models/base_response_model.dart';
+import '../../init/base_models/error_response_model.dart';
+import '../../init/base_models/success_response_model.dart';
 
 import '../abstract/firebase_data_service.dart';
 
@@ -13,18 +16,11 @@ class FirebaseDataManager extends FirebaseDataService {
   }
 
   @override
-  bool setDataToFirebase(String collectionName, String documentName, Map<String, Object?> json) {
-    bool isSuccess = false;
-    firestore
-        .collection(collectionName)
-        .doc(documentName)
-        .update(json)
-        .then(
-          (value) => isSuccess = true,
-        )
-        .catchError(
-          (error) => isSuccess = false,
-        );
-    return isSuccess;
+  BaseResponseModel<void> setDataToFirebase(String collectionName, String documentName, Map<String, Object?> json) {
+    firestore.collection(collectionName).doc(documentName).update(json).then((value) {}).catchError((error) {
+      // ignore: invalid_return_type_for_catch_error
+      return ErrorResponseModel(error: error);
+    });
+    return SuccessResponseModel();
   }
 }

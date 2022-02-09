@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
-import 'package:mars_project/core/constants/navigation_constants.dart';
-import 'package:mars_project/core/constants/string_constants.dart';
-import 'package:mars_project/core/init/navigation_service.dart';
-import 'package:mars_project/core/widget/error_widget.dart';
-import 'package:mars_project/models/top_item.dart';
-import 'package:mars_project/presentation/views/home/home_view_model/popular_ice_cream/repositories/popular_repository.dart';
-import 'package:mars_project/presentation/views/home/home_view_model/popular_ice_cream/top_flavours_cubit.dart';
+import '../../../../core/constants/navigation_constants.dart';
+import '../../../../core/constants/string_constants.dart';
+import '../../../../core/widget/error_widget.dart';
+import '../../../../models/top_item.dart';
+import '../home_view_model/popular_ice_cream/repositories/popular_repository.dart';
+import '../home_view_model/popular_ice_cream/top_flavours_cubit.dart';
 
 import '../../../../core/constants/color_constants.dart';
 import '../../../../core/constants/image_constants.dart';
 import '../../../../core/data/concrete/firebase_data_manager.dart';
+import '../../../../core/init/navigation/navigation_service.dart';
 import '../../../../models/top_flavour.dart';
 import '../../../widgets/home_view_widgets/button/search_filter_button.dart';
 import '../../../widgets/home_view_widgets/card/popular_ice_cream_card.dart';
@@ -146,7 +146,7 @@ class IceCreamHomeView extends StatelessWidget {
           if (state is TopFlavourLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is TopFlavourSuccess) {
-            TopFlavour _topFlavour = state.topFlavour ?? TopFlavour.baseModel;
+            TopFlavour _topFlavour = state.flavour ?? TopFlavour.baseModel;
             return GestureDetector(
               onTap: () {
                 NavigationService.instance.navigateToPage(

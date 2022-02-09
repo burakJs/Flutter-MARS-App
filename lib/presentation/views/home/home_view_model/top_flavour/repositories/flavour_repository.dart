@@ -8,6 +8,6 @@ class FlavourRepository extends IFlavourRepository {
 
   @override
   Future<Map<String, dynamic>?> getTopFlavour() async {
-    return await firebaseDataService.getDataFromFirebase('top_flavour', 'top');
+    return await firebaseDataService.getDataFromFirebase(firebase.TOP_FLAVOUR_COLLECTION, firebase.TOP_FLAVOUR_DOCUMENT);
   }
 }

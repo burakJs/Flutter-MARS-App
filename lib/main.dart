@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:mars_project/core/init/navigation_route.dart';
-import 'package:mars_project/core/init/navigation_service.dart';
 
 import 'core/constants/color_constants.dart';
+import 'core/init/navigation/navigation_route.dart';
+import 'core/init/navigation/navigation_service.dart';
 import 'presentation/views/home/home_view/ice_cream_home_view.dart';
 
 void main() async {

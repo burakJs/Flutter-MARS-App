@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:json_serializable/builder.dart';
-import 'package:mars_project/core/constants/color_constants.dart';
 
 part 'top_item.g.dart';
 

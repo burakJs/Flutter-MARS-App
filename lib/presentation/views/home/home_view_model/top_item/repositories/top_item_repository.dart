@@ -8,6 +8,6 @@ class TopItemRepository extends ITopItemRepository {
 
   @override
   Future<Map<String, dynamic>?> getTopItem() async {
-    return await firebaseDataService.getDataFromFirebase('top', 'top_item');
+    return await firebaseDataService.getDataFromFirebase(firebase.TOP_ITEM_COLLECTION, firebase.TOP_ITEM_COLLECTION);
   }
 }

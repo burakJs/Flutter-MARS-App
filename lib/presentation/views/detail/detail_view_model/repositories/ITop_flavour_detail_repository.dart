@@ -1,6 +1,9 @@
-import 'package:mars_project/models/top_flavour.dart';
+import '../../../../../core/constants/firebase_constants.dart';
+import '../../../../../core/init/base_models/base_response_model.dart';
+import '../../../../../models/top_flavour.dart';
 
 abstract class ITopFlavourDetailRepository {
-  Future<TopFlavour> setLike(TopFlavour topFlavour);
-  void setKilos();
+  FirebaseConstants firebase = FirebaseConstants.instance;
+  BaseResponseModel<TopFlavour> setLike(TopFlavour topFlavour);
+  int setKilos(int kg, bool isAdd);
 }

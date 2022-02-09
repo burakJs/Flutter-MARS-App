@@ -27,7 +27,7 @@ class TopFlavour {
   @JsonKey(name: 'reviews_count')
   final int reviewsCount;
 
-  final bool isLiked;
+  bool isLiked;
 
   Color get color => Color.fromRGBO(colorR, colorG, colorB, 1);
 
