@@ -24,7 +24,7 @@ class TopItemCard extends StatelessWidget {
       width: context.width / 2.4,
       decoration: BoxDecoration(
         borderRadius: context.lowBorderRadius,
-        color: ColorConstants().randomColor.withOpacity(0.3),
+        color: ColorConstants.softColors[index].withOpacity(0.4),
       ),
       child: Padding(
         padding: context.paddingLow,

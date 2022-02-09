@@ -31,7 +31,11 @@ class ColorConstants {
   static Color paleRose = const Color.fromRGBO(236, 198, 211, 1);
 
   /// Popular Ice Cream Card Colors
-  static List<Color> softColors = [deepCerise, witchHaze, paleCornflowerBlue];
+  static List<Color> softColors = [
+    paleCornflowerBlue,
+    deepCerise,
+    witchHaze,
+  ];
 
   /// Popular Ice Cream Card Colors
   Color get randomColor => softColors[Random().nextInt(softColors.length)];
