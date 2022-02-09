@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import '../../../../models/top_popular.dart';
 
 import '../../../../core/constants/color_constants.dart';
+import '../../../../models/top_popular.dart';
 
 class PopularIceCreamCard extends StatelessWidget {
   const PopularIceCreamCard({Key? key, required this.index, required this.topPopular}) : super(key: key);

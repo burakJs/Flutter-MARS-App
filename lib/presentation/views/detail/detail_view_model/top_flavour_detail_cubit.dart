@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/init/base_models/error_response_model.dart';
 import '../../../../models/top_flavour.dart';
 import 'repositories/ITop_flavour_detail_repository.dart';
-
 import 'top_flavour_detail_state.dart';
 
 class TopFlavourDetailCubit extends Cubit<TopFlavourDetailState> {

@@ -12,7 +12,11 @@ class TopFlavourDetailRepository extends ITopFlavourDetailRepository {
 
   @override
   int setKilos(int kg, bool isAdd) {
-    return isAdd ? kg + 1 : kg - 1;
+    return isAdd
+        ? kg + 1
+        : kg > 1
+            ? kg - 1
+            : kg;
   }
 
   @override
