@@ -1,4 +1,4 @@
-# mars_project
+# Flutter-MARS-App
 
 This app was developed for MARS App.<br>Firebase Firestore is used to store data in this app
 
